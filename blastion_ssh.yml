@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  blastion:
+    container_name: blastion_ssh
+    cap_add:
+      - LINUX_IMMUTABLE
+    environment:
+      #- Example :
+      # - USERNAME=ubuntu
+      # - PASSWORD=ubuntu
+      - USERNAME=<username you want to use for the login to container ssh>
+      - PASSWORD=<password you want to use for the login to container ssh>
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+    image: blastion_ssh:latest
+    hostname: <hostname you want for the honeypot in SSH>
+    ports:
+      - 22:22
+    restart: unless-stopped
+    volumes:
+      - "/path/to/container/homedir:/home/<username you have set on top>"
+      #- Example :
+      # - /root/blastion/homedir:/home/ubuntu
+    networks:
+        default:
+          ipv4_address: 192.168.214.5
+
+networks:
+  default:
+    external: true
+    name: honeypot_network
