@@ -42,3 +42,6 @@ services:
     volumes:
       - "/path/to/container/homedir:/home/<username you have set on top>"
 ```
+
+## Contributors
+This project have been made with [@Marokingu](https://github.com/Marokingu) and [@alexilrx](https://github.com/alexilrx)
