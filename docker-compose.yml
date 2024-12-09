@@ -13,20 +13,12 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Paris
-    image: blastion_ssh:latest
+    image: unbonwhisky/blastion_ssh:latest
     hostname: <hostname you want for the honeypot in SSH>
     ports:
-      - 22:22
+      - 22:22 # Make sure to change the real port of your SSH server
     restart: unless-stopped
     volumes:
       - "/path/to/container/homedir:/home/<username you have set on top>"
       #- Example :
       # - /root/blastion/homedir:/home/ubuntu
-    networks:
-        default:
-          ipv4_address: 192.168.214.5
-
-networks:
-  default:
-    external: true
-    name: honeypot_network
